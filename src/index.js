@@ -3,14 +3,23 @@
  * @param {string} string
  * @returns {string}
  */
-export const capitalizeString = 0;
+export const capitalizeString = (string) =>
+string.split(' ').map((item) =>`${item[0].toUpperCase()}${item.slice(1)}`).join(' ');
 
 /**
  * Должна быть function declaration
  * @param {string} string
  * @returns {string}
  */
-export const fenceString = 0;
+export const fenceString(string) {
+    return string.split('').map((item, index) => {
+        if (index % 2 === 0) {
+            return item.toLowerCase();
+        }else {
+            return item.toUpperCase();
+        }
+    }).join('');
+};
 
 /**
  * Должна быть function expression
@@ -18,7 +27,19 @@ export const fenceString = 0;
  * @param {string} string
  * @returns {string}
  */
-export const reducerIf = 0;
+export const reducerIf = function (action,string) {
+    if (action === 'uppercase') {
+        return string.toUpperCase();
+    } else if(action === 'lowercase') {
+        return string.toLowerCase();
+    } else if(action === 'capitalize') {
+        return capitalizeString(string);
+    } else if(action === 'fence') {
+        return fenceString(string);
+    } else {
+        return string
+    }
+};
 
 /**
  * Стрелочная
@@ -26,28 +47,57 @@ export const reducerIf = 0;
  * @param {string} string
  * @returns {string}
  */
-export const reducerSwitch = 0;
+export const reducerSwitch = (action, string) => {
+    switch (action) {
+        case 'uppercase':
+            return string.toUpperCase();
+            case 'lowercase':
+                return string.toLocaleLowerCase();
+                case 'capitalize':
+                    return capitalizeString(string);
+                    case 'fence':
+                        return fenceString(string);
+                        default:
+                            return string;
+    }
+};
 
 /**
  Стрелочная
  * @param {string} string
  */
-export const consoleLoggerWordsForOf = 0;
+export const consoleLoggerWordsForOf = (string) => {
+    for (let i of string) {
+        console.log(i);
+    }
+};
 
 /**
  Стрелочная
  * @param {string} string
  */
-export const consoleLoggerWordsFor = 0;
+export const consoleLoggerWordsFor = (string) => {
+    for (let i = 0; i < string.length; i++) {
+        console.log(string[i]);
+    }
+};
 
 /**
  Стрелочная
  * @param {string} string
  */
-export const consoleLoggerWordsWhile = 0;
+export const consoleLoggerWordsWhile = (string) {
+    let i = 0;
+    while (i < string.length) {
+        console.log(string[i]);
+        i++;
+    }
+};
 
 /**
  Стрелочная
  * @param {string} string
  */
-export const consoleLoggerWordsSplit = 0;
+export const consoleLoggerWordsSplit = (string) {
+    string.split('').forEach((item) => console.log(item));
+};
